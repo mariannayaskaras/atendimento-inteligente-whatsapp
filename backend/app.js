@@ -1,19 +1,26 @@
-const express = require('express');
-const axios = require('axios');
-const app = express();
+// backend/app.js
 
+const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+const analiseRoutes = require('./routes/analise.routes');
+
+const app = express();
 app.use(express.json());
 
-app.post('/analisar', async (req, res) => {
-  const { message } = req.body;
-
-  try {
-    const response = await axios.post('http://ml-api:8000/predict', { message });
-    res.json(response.data);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Erro ao comunicar com o serviço de ML' });
-  }
+// Conexão com MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log('✅ Conectado ao MongoDB');
+}).catch(err => {
+  console.error('❌ Erro ao conectar ao MongoDB:', err);
 });
 
-app.listen(3001, () => console.log('Backend rodando na porta 3001'));
+// Uso das rotas de análise
+app.use('/', analiseRoutes);
+
+// Inicia o servidor
+app.listen(3001, () => console.log('🚀 Backend rodando na porta 3001'));

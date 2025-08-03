@@ -1,0 +1,29 @@
+{
+  "name": "atendimento-inteligente-whatsapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mariannayaskaras/atendimento-inteligente-whatsapp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mariannayaskaras/atendimento-inteligente-whatsapp/issues"
+  },
+  "homepage": "https://github.com/mariannayaskaras/atendimento-inteligente-whatsapp#readme",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "mongoose": "^8.17.0"
+  }
+}
